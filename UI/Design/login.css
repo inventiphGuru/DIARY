@@ -1,0 +1,141 @@
+body {
+    background: url(image/pen_red.jpg) no-repeat center center fixed;
+    margin: 0px;
+    font-family: 'Ubuntu', sans-serif;
+    background-size: 100% 110%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow, sans-serif;
+    font-weight: 100;
+    background: rgba(0, 0, 0, 0.3);
+    color: pink;
+    padding: 2rem;
+    width: 70%;
+    margin: 2rem;
+    float: right;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-top: 0;
+    letter-spacing: .3rem;
+}
+
+@media screen and (max-device-width: 800px) {
+    body {
+        background: #015778 no-repeat center center fixed;
+    }
+}
+
+.login {
+    margin: 0 auto;
+    max-width: 500px;
+    float: right;
+}
+
+.login-header {
+    color: lightcoral;
+    text-align: center;
+    font-size: 300%;
+}
+
+/* .login-header h1 {
+   text-shadow: 0px 5px 15px #000; */
+
+.login-form {
+    border: .5px solid #fff;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #000;
+}
+
+.login-form h4 {
+    text-align: left;
+    margin-left: 40px;
+    color: pink;
+}
+
+.login-form {
+    box-sizing: border-box;
+    padding-top: 15px;
+    padding-bottom: 10%;
+    margin: 5% auto;
+    text-align: center;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    max-width: 400px;
+    width: 80%;
+    line-height: 3em;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 1em 2em;
+    border-radius: 5px;
+    border: 2px solid #f2f2f2;
+    outline: none;
+    padding-left: 10px;
+}
+
+.login-form input[type="button"] {
+    height: 30px;
+    width: 100px;
+    background: #fff;
+    border: 1px solid lightcoral;
+    border-radius: 20px;
+    color: slategrey;
+    text-transform: uppercase;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+}
+
+.login-form input[type="button"] {
+    height: 30px;
+    margin-left: -44%;
+    width: 100px;
+    background: white;
+    border: 1px solid pink;
+    border-radius: 20px;
+    color: slategrey;
+    text-transform: uppercase;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer
+}
+
+.fixed {
+    color: lightcoral;
+    margin-left: 30%;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+/*Media Querie*/
+
+@media only screen and (min-width: 150px) and (max-width: 530px) {
+    .login-form h4 {
+        text-align: center;
+        margin: 0;
+    }
+    .login {
+        margin: 10px 0;
+        background: none;
+    }
+    .login-button {
+        margin-bottom: 10px;
+    }
+}
