@@ -73,3 +73,37 @@ ul li div {
     line-height: 35px;
     padding-left: 10px;
 }
+
+/* Reponsive menu code */
+
+@media all and (max-width: 600px) {
+    aside {
+        width: 60px;
+        padding: 0px 10px;
+    }
+    ul li {
+        overflow: hidden;
+        padding: 0px 10px;
+    }
+    .title {
+        position: absolute;
+        z-index: -1;
+        left: -50px;
+        padding: 29px 15px;
+        line-height: 0px;
+        background: grey;
+    }
+    ul li:hover .title {
+        left: 80px;
+    }
+    .icons {
+        padding: 20px 10px;
+    }
+    ul li:hover .icons {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
