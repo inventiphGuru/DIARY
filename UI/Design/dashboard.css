@@ -5,17 +5,20 @@ html {
 header {
     background: lightcoral;
     width: 100%;
-    padding: 40px 0;
+    padding: 10px 0;
     color: white;
     text-align: center;
 }
 
+header h1, h5{
+    letter-spacing: 20px;
+}
+
 nav ul {
-    background-color: #43A286;
+    background-color: #008080;
     color: white;
     padding: 0;
     margin: 0;
-    text-align: center;
     overflow: hidden;
     -webkit-transition: max-height 0.4s;
     -ms-transition: max-height 0.4s;
@@ -51,6 +54,26 @@ footer {
     width: 100%;
     font-size: 0.8em;
     padding-bottom: 30px;
+}
+
+.badge1 {
+    position: relative;
+}
+
+.badge1[data-badge]:after {
+    content: attr(data-badge);
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: .7em;
+    background: crimson;
+    color: white;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 50%;
+    box-shadow: 0 0 1px #333;
 }
 
 .handle {
