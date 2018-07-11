@@ -229,7 +229,7 @@ textarea:focus {
 
 .submit:hover .ease {
     width: 100%;
-    background-color: #13d163;
+    background-color: teal;
 }
 
 @media only screen and (max-width: 580px) {
