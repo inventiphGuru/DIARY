@@ -1,0 +1,75 @@
+html {
+    height: 100%;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+body {
+    background: #fff;
+    padding: 10px;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Ubuntu', sans-serif;
+    background-size: 100% 110%;
+}
+
+aside {
+    height: 650px;
+    width: 160px;
+    background: grey;
+}
+
+ul {
+    padding: 0px;
+    margin: 0px;
+    border-bottom: 1px solid #1c1f21;
+}
+
+ul li {
+    list-style-type: none;
+    color: white;
+    padding: 10px;
+    border-bottom: 1px solid lightcoral;
+    border-top: 1px solid #1c1f21;
+    overflow: auto;
+    cursor: pointer;
+}
+
+ul li:first-child {
+    border-top: none;
+}
+
+.fa {
+    color: #18a3fc;
+    display: block;
+}
+
+ul li:hover .fa {
+    color: #0f82da;
+}
+
+ul li:hover .linktitle {
+    color: lightcoral;
+}
+
+ul li div {
+    float: left;
+}
+
+.icons {
+    padding: 10px;
+}
+
+.title {
+    line-height: 35px;
+    padding-left: 10px;
+}
