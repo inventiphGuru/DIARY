@@ -48,16 +48,7 @@ ul li:first-child {
     border-top: none;
 }
 
-.fa {
-    color: #18a3fc;
-    display: block;
-}
-
-ul li:hover .fa {
-    color: #0f82da;
-}
-
-ul li:hover .linktitle {
+ul li:hover .title {
     color: lightcoral;
 }
 
