@@ -10,7 +10,8 @@ header {
     text-align: center;
 }
 
-header h1, h5{
+header h1,
+h5 {
     letter-spacing: 20px;
 }
 
@@ -158,6 +159,7 @@ table.display th {
 
 table.display td {
     background: #fff;
+    cursor: pointer;
 }
 
 table.responsive-table {
