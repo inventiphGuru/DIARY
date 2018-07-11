@@ -22,6 +22,26 @@ body {
     background-size: 100% 110%;
 }
 
+header {
+    background: rgb(202, 135, 135);
+    width: 100%;
+    padding: 10px 0;
+    color: white;
+    text-align: center;
+}
+
+header h1,
+h5 {
+    letter-spacing: 20px;
+}
+
+footer {
+    text-align: center;
+    width: 90%;
+    font-size: 0.8em;
+    padding-top: -20px;
+}
+
 aside {
     height: 650px;
     width: 160px;
