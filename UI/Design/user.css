@@ -96,7 +96,6 @@ h5 {
     height: 60px;
 }
 
-
 .function_title {
     text-align: right;
     color: white;
@@ -296,7 +295,6 @@ h5 {
     font-size: 20px;
 }
 
-
 .edit {
     font-family: "Font Awesome 5 Free";
     float: right;
@@ -333,7 +331,6 @@ h5 {
 }
 
 /*==========  Mobile Method  ==========*/
-
 
 @media only screen and (min-width: 320px) {}
 
@@ -444,7 +441,6 @@ h5 {
         display: block;
         padding: 20px;
     }
-
 }
 
 /* Medium Devices, Desktops */
@@ -502,4 +498,11 @@ input:checked+.switch::before {
 
 input:checked+.switch:active::before {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 0 0 20px rgba(0, 150, 136, 0.2);
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    font-size: 0.8em;
+    padding-bottom: 30px;
 }
