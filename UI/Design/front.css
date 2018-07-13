@@ -1,0 +1,293 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 100%;
+    line-height: 1.45;
+    color: #2D2D2D;
+}
+
+.login-button {
+    height: 30px;
+    width: 100px;
+    background: #fff;
+    border: 1px solid lightcoral;
+    border-radius: 20px;
+    color: slategrey;
+    text-transform: uppercase;
+    font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
+}
+
+h1,
+h3 {
+    font-family: 'Lato';
+}
+
+h2,
+p,
+a {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 900px;
+}
+
+header {
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 20% 0;
+    height: 100%;
+    text-transform: uppercase;
+    letter-spacing: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+header h2 {
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+section {
+    background: #fff;
+    color: #1c262b;
+    padding: 3.5rem 0;
+}
+
+section.FirstSection {
+    background: teal;
+    color: #fff;
+}
+
+section.SecondSection {
+    background: #378a65;
+    color: #fafafa;
+}
+
+section h3 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 0 0 1rem;
+}
+
+section li {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+section p {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.col,
+.col-7,
+.col-3 {
+    margin: 0 1.5%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.col-7 {
+    width: 64%;
+}
+
+.col-3 {
+    width: 29%;
+}
+
+.col-5 {
+    width: 30%;
+}
+
+.FirstText {
+    text-align: left;
+}
+
+.FirstText h3 {
+    font-size: 2rem;
+    text-align: left;
+}
+
+.Detail {
+    text-align: center;
+    padding: 1rem;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+.Detail:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.Detail i {
+    font-size: 4rem;
+    margin: 0 0 2rem 0;
+}
+
+.Detail p {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+}
+
+blockquote {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+blockquote:before {
+    display: inline-block;
+    color: #fafafa;
+    font-size: 50px;
+    line-height: 10px;
+    content: '\201C';
+}
+
+blockquote p {
+    margin: 0;
+    display: inline;
+    font-size: 1.5rem;
+}
+
+blockquote cite {
+    font-size: 1rem;
+    display: block;
+    margin: .5rem 0 0 1.2rem;
+}
+
+blockquote cite:before {
+    content: '-';
+}
+
+blockquote cite:after {
+    content: '-';
+}
+
+.BgImage {
+    background: #007ece;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.BgImage:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 200%;
+    z-index: -1;
+    background: #3D9970 url("image/d.jpg") no-repeat top center;
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: .8;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.BgImage.SecondBg:before {
+    opacity: .6;
+    background-image: url("image/d.jpg");
+    background-position: center center;
+}
+
+footer {
+    text-align: center;
+    width: 90%;
+    font-size: 0.8em;
+    padding-top: -20px;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        padding: 50% 0;
+    }
+    header h1 {
+        font-size: 30px;
+        margin: 0 0 1rem;
+    }
+    header h2 {
+        font-size: 1.5rem;
+    }
+    section {
+        padding: 2rem 0;
+    }
+    section h3 {
+        font-size: 1.5rem;
+    }
+    .col-7 {
+        width: 100%;
+        margin: 0;
+    }
+    .col-3 {
+        width: 100%;
+        margin: 0;
+    }
+    .col-5 {
+        width: 60%;
+        margin: 0;
+    }
+    .Detail {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .Detail:last-child {
+        border: none;
+    }
+    .firstDescription {
+        height: 200px;
+        width: auto;
+        margin: 0 auto;
+    }
+    .Detail i {
+        font-size: 1.5rem;
+        width: 2rem;
+        text-align: center;
+        margin: 0 0 1rem 0;
+        float: left;
+    }
+    blockquote p {
+        font-size: 1.2rem;
+    }
+    blockquote cite {
+        font-size: .8rem;
+    }
+}
