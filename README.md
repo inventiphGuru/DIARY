@@ -7,4 +7,4 @@ Users can view the contents of a diary entry.
 Users can add or modify an entry.
 </p>
 
-<h5>link to my gh- pages</h5> https://ya7ya-h.github.io/DIARY/UI/Design/index.html
+<h5>link to my gh- pages</h5> https://ya7ya-h.github.io/DIARY/UI/Design/front.html
