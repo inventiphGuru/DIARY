@@ -16,6 +16,7 @@ def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(app_config[config_name])
     from endpoints.contents import entries_namespace as entries
+    #Register namesapce
     api.add_namespace(entries, path='/user')
     api.init_app(app)
     return app
