@@ -50,5 +50,5 @@ class EntryTestCase(unittest.TestCase):
             data=json.dumps(self.data),
             content_type="application/json")
         self.assertEqual(response.status_code, 201)
-        response = self.client.get('api/v1/user/entries')
-        self.assertEqual(response.status_code, 200)
+        response1 = self.client.get('api/v1/user/entries/1')
+        self.assertEqual(response1.status_code, 200)

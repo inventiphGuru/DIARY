@@ -55,5 +55,5 @@ class UpdateEntry(Resource):
             if result["ContentID"] == contentID
         ]
         if len(an_update) == 0:
-            return {'Status': "No entry found"}
+            return {'Status': "No entry found"}, 404
         return an_update
