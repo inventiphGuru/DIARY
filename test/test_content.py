@@ -24,3 +24,9 @@ class EntryTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         response = self.client.get('api/v1/user/entries')
         self.assertEqual(response.status_code, 200)
+
+    def test_400_post_a_request(self):
+        """Test bad request on post method"""
+        empty = self.client.post(
+            'api/v1/user/entries', data={}, content_type="application/json")
+        self.assertEqual(empty.status_code, 400)
