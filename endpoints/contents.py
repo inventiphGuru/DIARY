@@ -27,3 +27,13 @@ class UserEntry(Resource):
     def get(self):
         """Handle get request of url /entries"""
         return content_data
+
+    @entries_namespace.expect(entries_model)
+    def post(self):
+        """Handle post request of url/entries"""
+        post = request.get_json()
+        date = post["Date"]
+        entry = post["Content"]
+        user_entry = Content(date, entry)
+        user_entry.create()
+        return {"status": "Entry successfully created"}, 201
