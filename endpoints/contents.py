@@ -3,8 +3,7 @@ from flask_restplus import Resource, Namespace, fields
 from models.content import content_data, Content
 from flask import request
 
-entries_namespace = Namespace(
-    "content", description="Content related endpoints")
+entries_namespace = Namespace("User", description="Content related endpoints")
 entries_model = entries_namespace.model(
     "content_model", {
         "Date":
@@ -23,7 +22,7 @@ entries_model = entries_namespace.model(
 @entries_namespace.route("/entries")
 @entries_namespace.doc(responses={201: "Entry successfully created"})
 class UserEntry(Resource):
-    """This class handles get requests on user entry endpoint"""
+    """This class handles get requests in user entry endpoint"""
 
     def get(self):
         """Handle get request of url /entries"""
