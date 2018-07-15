@@ -30,3 +30,11 @@ class EntryTestCase(unittest.TestCase):
         empty = self.client.post(
             'api/v1/user/entries', data={}, content_type="application/json")
         self.assertEqual(empty.status_code, 400)
+
+    def test_api_post_entries(self):
+        """Test API url [POST] api/user/entries"""
+        response = self.client.post(
+            'api/v1/user/entries',
+            data=json.dumps(self.data),
+            content_type="application/json")
+        self.assertEqual(response.status_code, 201)
