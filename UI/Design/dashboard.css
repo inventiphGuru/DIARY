@@ -1,0 +1,223 @@
+html {
+    font-family: sans-serif;
+}
+
+header {
+    background: lightcoral;
+    width: 100%;
+    padding: 10px 0;
+    color: white;
+    text-align: center;
+}
+
+header h1,
+h5 {
+    letter-spacing: 20px;
+}
+
+.fas:hover {
+    background: whitesmoke;
+}
+
+nav ul {
+    background-color: #008080;
+    color: white;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 0.4s;
+    -ms-transition: max-height 0.4s;
+    -moz-transition: max-height 0.4s;
+    -o-transition: max-height 0.4s;
+    transition: max-height 0.4s;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 20px;
+}
+
+nav ul li:hover {
+    background-color: lightcoral;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+section {
+    line-height: 1.5em;
+    font-size: 0.9em;
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+footer {
+    text-align: center;
+    width: 100%;
+    font-size: 0.8em;
+    padding-bottom: 30px;
+}
+
+.badge1 {
+    position: relative;
+}
+
+.badge1[data-badge]:after {
+    content: attr(data-badge);
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: .7em;
+    background: crimson;
+    color: white;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 50%;
+    box-shadow: 0 0 1px #333;
+}
+
+.handle {
+    width: 100%;
+    background-color: #005C48;
+    box-sizing: border-box;
+    padding: 15px;
+    cursor: pointer;
+    color: white;
+    display: none;
+}
+
+p.menu {
+    display: inline-block;
+}
+
+.menu_icon div {
+    background-color: white;
+    border-radius: 2px;
+    width: 35px;
+    height: 5px;
+    margin: 5px;
+}
+
+.menu_icon {
+    float: right;
+    margin: .5em 0;
+}
+
+@media screen and (max-width: 620px) {
+    nav ul {
+        max-height: 0px;
+    }
+    nav ul li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 15px;
+    }
+    .showing {
+        max-height: 20em;
+    }
+    .handle {
+        display: block;
+    }
+    header h1 {
+        font-size: 3em;
+    }
+}
+
+a {
+    color: white;
+}
+
+.page {
+    max-width: 60em;
+    margin: 0 auto;
+}
+
+table th,
+table td {
+    text-align: left;
+}
+
+table.layout {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.display {
+    margin: 1em 0;
+}
+
+table.display th,
+table.display td {
+    border: 1px solid #B3BFAA;
+    padding: .5em 1em;
+}
+
+table.display th {
+    background: #D5E0CC;
+}
+
+table.display td {
+    background: #fff;
+    cursor: pointer;
+}
+
+table.responsive-table {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 30em) {
+    table.responsive-table {
+        box-shadow: none;
+    }
+    table.responsive-table thead {
+        display: none;
+    }
+    table.display th,
+    table.display td {
+        padding: .5em;
+    }
+    table.responsive-table td:nth-child(1):before {
+        content: 'Date';
+    }
+    table.responsive-table td:nth-child(2):before {
+        content: 'Name';
+    }
+    table.responsive-table td:nth-child(1),
+    table.responsive-table td:nth-child(2) {
+        padding-left: 25%;
+    }
+    table.responsive-table td:nth-child(1):before,
+    table.responsive-table td:nth-child(2):before {
+        position: absolute;
+        left: .5em;
+        font-weight: bold;
+    }
+    table.responsive-table tr,
+    table.responsive-table td {
+        display: block;
+    }
+    table.responsive-table tr {
+        position: relative;
+        margin-bottom: 1em;
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    }
+    table.responsive-table td {
+        border-top: none;
+    }
+    table.responsive-table td.date-created {
+        background: #D5E0CC;
+        border-top: 1px solid #B3BFAA;
+    }
+    table.responsive-table td.actions {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: none;
+        background: none;
+    }
+}

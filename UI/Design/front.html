@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+    <link href="front.css" rel="stylesheet" type="text/css">
+    <title>Landing page</title>
+</head>
+
+<body>
+
+    <header class="BgImage">
+        <div class="container">
+            <input onclick="location.href='login.html'" type="button" value="login" class="login-button" />
+            <input onclick="location.href='index.html'" type="button" value="signup" class="login-button" />
+            <h1 class="element">MY DIARY</h1>
+        </div>
+    </header>
+
+    <section class="">
+        <div class="container">
+            <div class="col-3 AlignCenter">
+                <img src="image/a.png" alt="" class="firstDescription" />
+            </div>
+            <div class="col-7 FirstText">
+                <h3>My diary</h3>
+                <p>Keeping a secret, feeling and your reminder inside a diary notebook has never been easy, with MY DIARY you
+                    can keep all your secret and reminder with a password and can access it with any gadget anywhere, any
+                    place unlike notebook ..
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="FirstSection">
+        <div class="container">
+            <div class="col-3 Detail">
+                <h2>Home</h2>
+                <p>
+                    Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur
+                </p>
+            </div>
+            <div class="col-3 Detail">
+                <h2>Dashboard</h2>
+                <p>
+                    All your notes and entry are arranged chronogically with the lastest update and you can Add new entry modify or delete
+                </p>
+            </div>
+            <div class="col-3 Detail">
+                <h2>Reminder</h2>
+                <p>
+                    With just one tap, you can switch ON/OFF reminder in MY APP
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="SecondSection BgImage SecondBg">
+        <div class="container">
+            <blockquote class="testimonial">
+                <p>"I want to write, but more than that, I want to bring out all kinds of things that lie buried deep in my
+                    heart."
+                </p>
+                <cite>
+                    —Anne Frank, The Diary of Anne Frank
+                </cite>
+            </blockquote>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2018 ANDELA KENYA
+    </footer>
+    <script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
+</body>
+<script>
+    var typed = new Typed('.element', {
+        strings: ["M Y    D I A R  Y",
+            "MyDiary is an online journal where users can pen down their thoughts and feelings",
+            "can set and get daily notification ",
+            " W E L C O M E"
+        ],
+        typeSpeed: 120,
+        backSpeed: 30,
+        backDelay: 1000,
+        startDelay: 1000,
+        loop: true,
+    });
+</script>
+
+</html>
