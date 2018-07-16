@@ -24,3 +24,26 @@ registration_model = auth_namespace.model(
             description='Your secret password',
             example='its26uv3nf')
     })
+
+
+@auth_namespace.route("/signup")
+class Signup(Resource):
+    """Handles api registration url api/auth/signup."""
+
+    @auth_namespace.doc('create new user')
+    @auth_namespace.expect(registration_model)
+    def post(self):
+        """create a new user to database"""
+        data = request.get_json()
+        first_name = data['FirstName']
+        last_name = data['LastName']
+        email = data['Email']
+        password = data['Password']
+
+        user = User(first_name, last_name, email, password)
+        user.create()
+
+        return {
+            'status': 'success',
+            'message': 'Successfully registered.'
+        }, 201
