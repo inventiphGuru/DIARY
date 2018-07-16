@@ -25,6 +25,20 @@ registration_model = auth_namespace.model(
             example='its26uv3nf')
     })
 
+login_model = auth_namespace.model(
+    'Login', {
+        "Email":
+        fields.String(
+            required=True,
+            description='your email accounts',
+            example='John_Doe@example.com'),
+        "Password":
+        fields.String(
+            required=True,
+            description='Your secret password',
+            example='its26uv3nf')
+    })
+
 
 @auth_namespace.route("/signup")
 class Signup(Resource):
