@@ -72,3 +72,14 @@ class EntryTestCase(unittest.TestCase):
             }),
             content_type="application/json")
         self.assertEqual(response.status_code, 201)
+
+    def test_404_PUT_entries(self):
+        """Test bad entry on [PUT] method"""
+        bad_content = self.client.put(
+            'api/v1/user/entries/1',
+            data={
+                "Date": "18/18/2018",
+                "Content": "Invalid id "
+            },
+            content_type="application/json")
+        self.assertEqual(bad_content.status_code, 404)
