@@ -94,3 +94,13 @@ class EntryTestCase(unittest.TestCase):
         response = self.client.put(
             'api/v1/user/entries/0', data={}, content_type="application/json")
         self.assertEqual(response.status_code, 400)
+
+    def test_delete_an_entry(self):
+        """Test API resource [PUT] endpoint url /user/api"""
+        response = self.client.post(
+            'api/v1/user/entries',
+            data=json.dumps(self.data),
+            content_type="application/json")
+        self.assertEqual(response.status_code, 201)
+        response = self.client.delete('api/v1/user/entries/1')
+        self.assertEqual(response.status_code, 201)
