@@ -67,7 +67,7 @@ class Signup(Resource):
 @auth_namespace.route('/login')
 @auth_namespace.doc(
     responses={
-        200: 'Successfully login',
+        201: 'Successfully login',
         401: 'Invalid credential'
     },
     security=None,
@@ -87,7 +87,7 @@ class Login(Resource):
                 return {
                     'status': 'success',
                     'message': 'Successfully login.'
-                }, 200
+                }, 201
             else:
                 return {
                     "message": "Failed, Invalid password! Please try again"
