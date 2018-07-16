@@ -83,3 +83,14 @@ class EntryTestCase(unittest.TestCase):
             },
             content_type="application/json")
         self.assertEqual(bad_content.status_code, 404)
+
+    def test_api_400_invalid_parameter(self):
+        """Test status_code 400 [PUT] for api/user/entries/<id>"""
+        response = self.client.post(
+            'api/v1/user/entries',
+            data=json.dumps(self.data),
+            content_type="application/json")
+        self.assertEqual(response.status_code, 201)
+        response = self.client.put(
+            'api/v1/user/entries/0', data={}, content_type="application/json")
+        self.assertEqual(response.status_code, 400)
