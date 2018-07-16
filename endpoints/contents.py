@@ -73,3 +73,13 @@ class UpdateEntry(Resource):
             update_entries[0]["Content"] = post_data["Content"]
 
             return {"status": " Entry content successfully created"}, 201
+
+    def delete(self, contentID):
+        del_item = [
+            del_item for del_item in content_data
+            if del_item["ContentID"] == contentID
+        ]
+        if len(del_item) == 0:
+            return {"Message": "Sorry, No such id is found to be deleted"}, 404
+        del content_data[contentID]
+        return {"status": "Entry successfully deleted"}, 201
