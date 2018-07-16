@@ -29,7 +29,7 @@ class EntryTestCase(unittest.TestCase):
         response = self.client.get('api/v1/user/entries')
         self.assertEqual(response.status_code, 200)
 
-    def test_400_post_a_request(self):
+    def test_400_post_entries(self):
         """Test bad request on post method"""
         empty = self.client.post(
             'api/v1/user/entries', data={}, content_type="application/json")
@@ -56,3 +56,41 @@ class EntryTestCase(unittest.TestCase):
     def test_404_get_single_entry(self):
         response = self.client.get("/api/user/entry/3")
         self.assertEqual(response.status_code, 404)
+
+    def test_api_update_entry_with_id(self):
+        """Test API url [PUT] api/user/entries"""
+        response = self.client.post(
+            'api/v1/user/entries',
+            data=json.dumps(self.data),
+            content_type="application/json")
+        self.assertEqual(response.status_code, 201)
+        response = self.client.put(
+            'api/v1/user/entries/1',
+            data=json.dumps({
+                "Date": "02/02/18",
+                "Content": "Updated I had fun at the zoo"
+            }),
+            content_type="application/json")
+        self.assertEqual(response.status_code, 201)
+
+    def test_404_PUT_entries(self):
+        """Test bad entry on [PUT] method"""
+        bad_content = self.client.put(
+            'api/v1/user/entries/1',
+            data={
+                "Date": "18/18/2018",
+                "Content": "Invalid id "
+            },
+            content_type="application/json")
+        self.assertEqual(bad_content.status_code, 404)
+
+    def test_api_400_invalid_parameter(self):
+        """Test status_code 400 [PUT] for api/user/entries/<id>"""
+        response = self.client.post(
+            'api/v1/user/entries',
+            data=json.dumps(self.data),
+            content_type="application/json")
+        self.assertEqual(response.status_code, 201)
+        response = self.client.put(
+            'api/v1/user/entries/0', data={}, content_type="application/json")
+        self.assertEqual(response.status_code, 400)

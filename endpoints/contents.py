@@ -57,3 +57,19 @@ class UpdateEntry(Resource):
         if len(an_update) == 0:
             return {'Status': "No entry found"}, 404
         return an_update
+
+    @entries_namespace.expect(entries_model)
+    def put(self, contentID):
+        """Modify a entries."""
+        update_entries = [
+            entries_data for entries_data in content_data
+            if entries_data["ContentID"] == contentID
+        ]
+        if len(update_entries) == 0:
+            return {'message': 'No content found'}, 404
+        else:
+            post_data = request.get_json()
+            update_entries[0]["Date"] = post_data["Date"]
+            update_entries[0]["Content"] = post_data["Content"]
+
+            return {"status": " Entry content successfully created"}, 201
