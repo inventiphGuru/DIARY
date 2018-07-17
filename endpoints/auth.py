@@ -109,9 +109,12 @@ class Login(Resource):
         if user_email in user_data:
             if Bcrypt().check_password_hash(user_data[user_email]["Password"],
                                             user_password):
+                # # generate the auth token
+                auth_token = User.encode_auth_token(user_email)
                 return {
                     'status': 'success',
-                    'message': 'Successfully login.'
+                    'message': 'Successfully login.',
+                    'auth_token': auth_token.decode()
                 }, 201
             else:
                 return {

@@ -3,7 +3,6 @@ import os
 import json
 from flask import Flask
 from app.app import create_app
-from models.content import content_data, Content
 
 
 class EntryTestCase(unittest.TestCase):
