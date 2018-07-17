@@ -133,6 +133,7 @@ class EntryTestCase(unittest.TestCase):
                          "Password should be more than 6 character ")
         self.assertEqual(response.status_code, 400)
 
+    #Login
     def test_api_user_login_successfully(self):
         """Test user signin successfully"""
         response = self.client.post(

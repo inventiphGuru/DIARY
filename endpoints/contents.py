@@ -27,13 +27,13 @@ class UserEntry(Resource):
     """This class handles get requests in user entry endpoint"""
 
     @token_required
-    def get(self):
+    def get(self, current_user):
         """Handle get request of url /entries"""
         return content_data
 
     @token_required
     @entries_namespace.expect(entries_model)
-    def post(self):
+    def post(self, current_user):
         """Handle post request of url/entries"""
         post = request.get_json()
         date = post["Date"]
@@ -55,7 +55,7 @@ class UpdateEntry(Resource):
     """Handle [UPDATE] request of URL user/entries/id"""
 
     @token_required
-    def get(self, contentID):
+    def get(self, current_user, contentID):
         an_update = [
             result for result in content_data
             if result["ContentID"] == contentID
@@ -66,7 +66,7 @@ class UpdateEntry(Resource):
 
     @token_required
     @entries_namespace.expect(entries_model)
-    def put(self, contentID):
+    def put(self, current_user, contentID):
         """Modify a entries."""
         update_entries = [
             entries_data for entries_data in content_data
@@ -82,7 +82,7 @@ class UpdateEntry(Resource):
             return {"status": " Entry content successfully created"}, 201
 
     @token_required
-    def delete(self, contentID):
+    def delete(self, current_user, contentID):
         del_item = [
             del_item for del_item in content_data
             if del_item["ContentID"] == contentID
