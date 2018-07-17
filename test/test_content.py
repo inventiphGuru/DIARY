@@ -39,6 +39,33 @@ class EntryTestCase(unittest.TestCase):
                          "Unauthorized, access token required!")
         self.assertEqual(response.status_code, 401)
 
+    def test_api_can_get_all_entries(self):
+        """Test API can GET all entries """
+        #Signup
+        signup = self.client.post(
+            '/api/v1/auth/signup',
+            data=json.dumps(self.user_registration),
+            content_type="application/json")
+        self.assertEqual(signup.status_code, 201)
+
+        #Login
+        login = self.client.post(
+            '/api/v1/auth/login',
+            data=json.dumps(self.user_login),
+            content_type="application/json")
+        result = json.loads(login.data)
+        self.assertEqual(result['message'], 'Successfully login.')
+        self.assertEqual(login.status_code, 201)
+
+        #entries
+        access_token = json.loads(login.data.decode())['auth_token']
+        response = self.client.get(
+            'api/v1/user/entries',
+            data=json.dumps(self.data),
+            content_type="application/json",
+            headers=dict(access_token=access_token))
+        self.assertEqual(response.status_code, 200)
+
     # def test_400_post_entries(self):
     #     """Test bad request on post method"""
     #     empty = self.client.post(
