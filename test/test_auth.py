@@ -71,7 +71,7 @@ class EntryTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
 
     def test_signup_names_invalid_char(self):
-        """Test user signups name with less than two characters"""
+        """Test user signups name with invalid characters"""
         response = self.client.post(
             '/api/v1/auth/signup',
             data=json.dumps({
@@ -84,6 +84,53 @@ class EntryTestCase(unittest.TestCase):
         result = json.loads(response.data)
         self.assertEqual(result["Message"],
                          "Invalid character in your name(s)")
+        self.assertEqual(response.status_code, 400)
+
+    def test_signup_email_less_than_four_char(self):
+        """Test user signups email with less than four characters"""
+        response = self.client.post(
+            '/api/v1/auth/signup',
+            data=json.dumps({
+                "FirstName": "John",
+                "LastName": "Doe",
+                "Email": ".co",
+                "Password": "its26uv3nf"
+            }),
+            content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["Message"],
+                         "Email should be more than 4 character ")
+        self.assertEqual(response.status_code, 400)
+
+    def test_signup_email_invalid_char(self):
+        """Test user signups email with invalid characters"""
+        response = self.client.post(
+            '/api/v1/auth/signup',
+            data=json.dumps({
+                "FirstName": "John",
+                "LastName": "Doe",
+                "Email": "look!!!!!!!!@invalid.com",
+                "Password": "its26uv3nf"
+            }),
+            content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["Message"], "Invalid character in your email ")
+        self.assertEqual(response.status_code, 400)
+
+    def test_signup_password_less_than_six_char(self):
+        """Test user signups  with less than six characters"""
+        response = self.client.post(
+            '/api/v1/auth/signup',
+            data=json.dumps({
+                "FirstName": "John",
+                "LastName": "Doe",
+                "Email": "John_Doe@example.com",
+                "Password": "abc"
+            }),
+            content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["Message"],
+                         "Password should be more than 6 character ")
         self.assertEqual(response.status_code, 400)
 
     def test_api_user_login_successfully(self):
