@@ -74,6 +74,12 @@ class Signup(Resource):
                     "Status": "Error",
                     "Message": "Invalid character in your name(s) "
                 }, 400
+            if len(password) < 6:
+                return {
+                    "Status": "Error",
+                    "Message": "Password should be more than 6 character "
+                }, 400
+
         except (KeyError) as e:
             return {"Message": str(e)}
         else:
