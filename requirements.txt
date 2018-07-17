@@ -6,3 +6,4 @@ nose2
 pylint
 pytest
 yapf
+pyjwt
