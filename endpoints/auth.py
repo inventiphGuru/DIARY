@@ -79,6 +79,16 @@ class Signup(Resource):
                     "Status": "Error",
                     "Message": "Password should be more than 6 character "
                 }, 400
+            if len(email) < 4:
+                return {
+                    "Status": "Error",
+                    "Message": "Email should be more than 4 character "
+                }, 400
+            if not re.match(email_expression, email):
+                return {
+                    "Status": "Error",
+                    "Message": "Invalid character in your email "
+                }, 400
 
         except (KeyError) as e:
             return {"Message": str(e)}
