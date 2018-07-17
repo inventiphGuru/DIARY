@@ -2,8 +2,17 @@ from flask import Flask
 from flask_restplus import Api
 from configurations.config import app_config
 
+authorization = {
+    'apikey': {
+        'type': 'apiKey',
+        'in': 'header',
+        'name': 'access_token'
+    }
+}
+
 api = Api(
     version="1.0",
+    authorizations=authorization,
     title="MY DIARY API",
     description="A simple My Diary API",
     prefix='/api/v1')
