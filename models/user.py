@@ -1,5 +1,8 @@
 user_data = {}
 from flask_bcrypt import Bcrypt
+import jwt
+import datetime
+import os
 
 
 class User:

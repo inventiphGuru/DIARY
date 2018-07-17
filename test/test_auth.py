@@ -3,6 +3,7 @@ import os
 import json
 from flask import Flask
 from app.app import create_app
+from models.user import User
 
 
 class EntryTestCase(unittest.TestCase):
@@ -22,6 +23,16 @@ class EntryTestCase(unittest.TestCase):
             "Email": "John_Doe@example.com",
             "Password": "its26uv3nf"
         }
+
+    def test_encode_auth_token(self):
+        user = User(
+            firstname="test",
+            lastname="tester",
+            email='test@test.com',
+            password='test123')
+        user.create()
+        auth_token = user.encode_auth_token(user.email)
+        self.assertTrue(isinstance(auth_token, bytes))
 
     def test_user_signup(self):
         """Test user registration"""
