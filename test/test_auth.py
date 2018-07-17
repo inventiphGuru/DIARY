@@ -34,6 +34,17 @@ class EntryTestCase(unittest.TestCase):
         auth_token = user.encode_auth_token(user.email)
         self.assertTrue(isinstance(auth_token, bytes))
 
+    def test_decode_auth_token(self):
+        user = User(
+            firstname="test",
+            lastname="tester",
+            email='test@test.com',
+            password='test123')
+        user.create()
+        auth_token = user.encode_auth_token(user.email)
+        self.assertTrue(isinstance(auth_token, bytes))
+        self.assertTrue(User.decode_auth_token(auth_token == 'test@test.com'))
+
     def test_user_signup(self):
         """Test user registration"""
         response = self.client.post(
