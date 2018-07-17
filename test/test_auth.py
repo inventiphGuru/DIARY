@@ -55,6 +55,37 @@ class EntryTestCase(unittest.TestCase):
         self.assertEqual(result['message'], 'Successfully registered.')
         self.assertEqual(response.status_code, 201)
 
+    def test_signup_names_less_than_two_char(self):
+        """Test user signups name with less than two characters"""
+        response = self.client.post(
+            '/api/v1/auth/signup',
+            data=json.dumps({
+                "FirstName": "J",
+                "LastName": "Do",
+                "Email": "John_Doe@example.com",
+                "Password": "its26uv3nf"
+            }),
+            content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["Message"], "Names should be more than 2 ")
+        self.assertEqual(response.status_code, 400)
+
+    def test_signup_names_invalid_char(self):
+        """Test user signups name with less than two characters"""
+        response = self.client.post(
+            '/api/v1/auth/signup',
+            data=json.dumps({
+                "FirstName": "!!!!!!!!!",
+                "LastName": "$$$$$$$$$$$$",
+                "Email": "John_Doe@example.com",
+                "Password": "its26uv3nf"
+            }),
+            content_type="application/json")
+        result = json.loads(response.data)
+        self.assertEqual(result["Message"],
+                         "Invalid character in your name(s)")
+        self.assertEqual(response.status_code, 400)
+
     def test_api_user_login_successfully(self):
         """Test user signin successfully"""
         response = self.client.post(

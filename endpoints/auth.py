@@ -72,7 +72,7 @@ class Signup(Resource):
                     and re.match(pattern, last_name)):
                 return {
                     "Status": "Error",
-                    "Message": "Invalid character in your name(s) "
+                    "Message": "Invalid character in your name(s)"
                 }, 400
             if len(password) < 6:
                 return {
