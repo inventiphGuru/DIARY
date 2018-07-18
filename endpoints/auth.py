@@ -112,9 +112,9 @@ class Login(Resource):
 
     def post(self):
         """Handle POST request for login"""
-        post = request.get_json()
-        user_email = post['Email']
-        user_password = post['Password']
+        post_data = request.get_json()
+        user_email = post_data['Email']
+        user_password = post_data['Password']
 
         if user_email in user_data:
             if Bcrypt().check_password_hash(user_data[user_email]["Password"],

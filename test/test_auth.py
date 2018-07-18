@@ -30,6 +30,32 @@ class EntryTestCase(unittest.TestCase):
             "Password": "its26uv3nf"
         }
 
+    def register_user(self,
+                      last_name="Doe",
+                      first_name="John",
+                      email="John_Doe@example.com",
+                      password="its26uv3nf"):
+        """signup helper"""
+        user_data = {
+            "FirstName": first_name,
+            "LastName": last_name,
+            "Email": email,
+            "Password": password
+        }
+        return self.client.post(
+            '/api/v1/auth/signup',
+            data=json.dumps(user_data),
+            content_type="application/json")
+
+    def sign_in_user(self, email="John_Doe@example.com",
+                     password="its26uv3nf"):
+        """A login helper method"""
+        user_data = {"Email": email, "Password": password}
+        return self.client.post(
+            '/api/v1/auth/login',
+            data=json.dumps(user_data),
+            content_type="application/json")
+
     def test_encode_auth_token(self):
         user = User(
             firstname="test",
@@ -128,20 +154,12 @@ class EntryTestCase(unittest.TestCase):
                          "Password should be more than 6 character ")
         self.assertEqual(response.status_code, 400)
 
+    #LOGIN TESTS
     def test_api_user_login_successfully(self):
         """Test user signin successfully"""
-        self.client.post(
-            'api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-
-        login_result = self.client.post(
-            'api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        results = json.loads(login_result.data)
-
-        self.assertEqual(results['message'], 'Successfully login.')
+        self.register_user()
+        result = self.sign_in_user()
+        self.assertEqual(result.status_code, 201)
 
     def test_api_invalid_email(self):
         """Test for invalid email in signin endpoint"""
