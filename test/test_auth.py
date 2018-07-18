@@ -34,17 +34,6 @@ class EntryTestCase(unittest.TestCase):
         auth_token = user.encode_auth_token(user.email)
         self.assertTrue(isinstance(auth_token, bytes))
 
-    def test_decode_auth_token(self):
-        user = User(
-            firstname="test",
-            lastname="tester",
-            email='test@test.com',
-            password='test123')
-        user.create()
-        auth_token = user.encode_auth_token(user.email)
-        self.assertTrue(isinstance(auth_token, bytes))
-        self.assertTrue(User.decode_auth_token(auth_token == 'test@test.com'))
-
     def test_user_signup(self):
         """Test user registration"""
         response = self.client.post(
@@ -145,8 +134,6 @@ class EntryTestCase(unittest.TestCase):
             '/api/v1/auth/login',
             data=json.dumps(self.user_login),
             content_type="application/json")
-        result = json.loads(response.data)
-        self.assertEqual(result['message'], 'Successfully login.')
         self.assertEqual(response.status_code, 201)
 
     def test_api_invalid_email(self):
