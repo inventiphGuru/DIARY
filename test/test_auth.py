@@ -132,7 +132,10 @@ class EntryTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         response = self.client.post(
             '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
+            data=json.dumps({
+                "Email": "John_Doe@example.com",
+                "Password": "its26uv3nf"
+            }),
             content_type="application/json")
         self.assertEqual(response.status_code, 201)
 
