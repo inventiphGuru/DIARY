@@ -2,6 +2,7 @@
 from flask_restplus import Resource, Namespace, fields
 from models.content import content_data, Content
 from flask import request
+from models.token import token_required
 
 entries_namespace = Namespace("User", description="Content related endpoints")
 entries_model = entries_namespace.model(
@@ -20,16 +21,19 @@ entries_model = entries_namespace.model(
 
 
 @entries_namespace.route("/entries")
-@entries_namespace.doc(responses={201: "Entry successfully created"})
+@entries_namespace.doc(
+    responses={201: "Entry successfully created"}, security="apikey")
 class UserEntry(Resource):
     """This class handles get requests in user entry endpoint"""
 
-    def get(self):
+    @token_required
+    def get(self, current_user):
         """Handle get request of url /entries"""
         return content_data
 
+    @token_required
     @entries_namespace.expect(entries_model)
-    def post(self):
+    def post(self, current_user):
         """Handle post request of url/entries"""
         post = request.get_json()
         date = post["Date"]
@@ -45,11 +49,13 @@ class UserEntry(Resource):
         201: "Entry successfully updated",
         400: "Invalid parameters provided",
         404: "Entry not found"
-    })
+    },
+    security="apikey")
 class UpdateEntry(Resource):
     """Handle [UPDATE] request of URL user/entries/id"""
 
-    def get(self, contentID):
+    @token_required
+    def get(self, current_user, contentID):
         an_update = [
             result for result in content_data
             if result["ContentID"] == contentID
@@ -58,8 +64,9 @@ class UpdateEntry(Resource):
             return {'Status': "No entry found"}, 404
         return an_update
 
+    @token_required
     @entries_namespace.expect(entries_model)
-    def put(self, contentID):
+    def put(self, current_user, contentID):
         """Modify a entries."""
         update_entries = [
             entries_data for entries_data in content_data
@@ -74,7 +81,8 @@ class UpdateEntry(Resource):
 
             return {"status": " Entry content successfully created"}, 201
 
-    def delete(self, contentID):
+    @token_required
+    def delete(self, current_user, contentID):
         del_item = [
             del_item for del_item in content_data
             if del_item["ContentID"] == contentID

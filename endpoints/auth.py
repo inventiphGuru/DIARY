@@ -2,6 +2,7 @@ from flask_restplus import Resource, Namespace, fields
 from flask import request
 from flask_bcrypt import Bcrypt
 from models.user import user_data, User
+import re
 
 auth_namespace = Namespace(
     'auth', description="Handle Authentification Related Operation")
@@ -40,6 +41,10 @@ login_model = auth_namespace.model(
             example='its26uv3nf')
     })
 
+email_expression = re.compile(
+    r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+pattern = re.compile(r"(^[A-Za-z]+$)")
+
 
 @auth_namespace.route("/signup")
 class Signup(Resource):
@@ -57,11 +62,41 @@ class Signup(Resource):
 
         user = User(first_name, last_name, email, password)
         user.create()
+        try:
+            if (len(first_name) or len(last_name)) < 2:
+                return {
+                    "Status": "Error",
+                    "Message": "Names should be more than 2 "
+                }, 400
+            if not (re.match(pattern, first_name)
+                    and re.match(pattern, last_name)):
+                return {
+                    "Status": "Error",
+                    "Message": "Invalid character in your name(s)"
+                }, 400
+            if len(password) < 6:
+                return {
+                    "Status": "Error",
+                    "Message": "Password should be more than 6 character "
+                }, 400
+            if len(email) < 4:
+                return {
+                    "Status": "Error",
+                    "Message": "Email should be more than 4 character "
+                }, 400
+            if not re.match(email_expression, email):
+                return {
+                    "Status": "Error",
+                    "Message": "Invalid character in your email "
+                }, 400
 
-        return {
-            'status': 'success',
-            'message': 'Successfully registered.'
-        }, 201
+        except (KeyError) as e:
+            return {"Message": str(e)}
+        else:
+            return {
+                'status': 'success',
+                'message': 'Successfully registered.'
+            }, 201
 
 
 @auth_namespace.route('/login')
@@ -84,9 +119,12 @@ class Login(Resource):
         if user_email in user_data:
             if Bcrypt().check_password_hash(user_data[user_email]["Password"],
                                             user_password):
+                # # generate the auth token
+                auth_token = User.encode_auth_token(user_email)
                 return {
                     'status': 'success',
-                    'message': 'Successfully login.'
+                    'message': 'Successfully login.',
+                    'auth_token': auth_token.decode()
                 }, 201
             else:
                 return {

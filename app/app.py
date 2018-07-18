@@ -2,8 +2,17 @@ from flask import Flask
 from flask_restplus import Api
 from configurations.config import app_config
 
+authorization = {
+    'apikey': {
+        'type': 'apiKey',
+        'in': 'header',
+        'name': 'access_token'
+    }
+}
+
 api = Api(
     version="1.0",
+    authorizations=authorization,
     title="MY DIARY API",
     description="A simple My Diary API",
     prefix='/api/v1')
@@ -16,7 +25,7 @@ def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(app_config[config_name])
     from endpoints.contents import entries_namespace as entries
-    from endpoints.user import auth_namespace as auth
+    from endpoints.auth import auth_namespace as auth
     api.add_namespace(entries, path='/user')
     api.add_namespace(auth, path='/auth')
     api.init_app(app)
