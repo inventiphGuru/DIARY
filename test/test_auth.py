@@ -4,6 +4,12 @@ import json
 from flask import Flask
 from app.app import create_app
 from models.user import User
+import inspect
+import sys
+currentdir = os.path.dirname(os.path.abspath(
+    inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir
 
 
 class EntryTestCase(unittest.TestCase):
@@ -134,22 +140,10 @@ class EntryTestCase(unittest.TestCase):
             'api/v1/auth/login',
             data=json.dumps(self.user_login),
             content_type="application/json")
-
+        print(login_result)
         results = json.loads(login_result.data)
+        print(results)
         self.assertEqual(results['message'], 'Successfully login.')
-
-        # response = self.client.post(
-        #     '/api/v1/auth/signup',
-        #     data=json.dumps(self.user_registration),
-        #     content_type="application/json")
-        # self.assertEqual(response.status_code, 201)
-        # response = self.client.post(
-        #     '/api/v1/auth/login',
-        #     data=json.dumps(self.user_login),
-        #     content_type="application/json")
-        # result = json.loads(response.data)
-        # self.assertEqual(result['message'], 'Successfully login.')
-        # self.assertEqual(response.status_code, 201)
 
     def test_api_invalid_email(self):
         """Test for invalid email in signin endpoint"""
