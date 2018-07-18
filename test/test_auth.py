@@ -128,7 +128,6 @@ class EntryTestCase(unittest.TestCase):
                          "Password should be more than 6 character ")
         self.assertEqual(response.status_code, 400)
 
-    #Login
     def test_api_user_login_successfully(self):
         """Test user signin successfully"""
         self.client.post(
@@ -140,9 +139,8 @@ class EntryTestCase(unittest.TestCase):
             'api/v1/auth/login',
             data=json.dumps(self.user_login),
             content_type="application/json")
-        print(login_result)
         results = json.loads(login_result.data)
-        print(results)
+
         self.assertEqual(results['message'], 'Successfully login.')
 
     def test_api_invalid_email(self):
