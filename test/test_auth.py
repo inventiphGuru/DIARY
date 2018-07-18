@@ -129,14 +129,13 @@ class EntryTestCase(unittest.TestCase):
             '/api/v1/auth/signup',
             data=json.dumps(self.user_registration),
             content_type="application/json")
-        self.assertEqual(response.status_code, 201)
         response = self.client.post(
             '/api/v1/auth/login',
             data=json.dumps(self.user_login),
             content_type="application/json")
         result = json.loads(response.data)
         self.assertEqual(result['message'], 'Successfully login.')
-        # self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 201)
 
     def test_api_invalid_email(self):
         """Test for invalid email in signin endpoint"""
