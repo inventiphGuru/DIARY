@@ -34,6 +34,32 @@ class EntryTestCase(unittest.TestCase):
             "Content": "I had fun at the zoo"
         }
 
+    def register_user(self,
+                      last_name="Doe",
+                      first_name="John",
+                      email="John_Doe@example.com",
+                      password="its26uv3nf"):
+        """signup helper"""
+        user_data = {
+            "FirstName": first_name,
+            "LastName": last_name,
+            "Email": email,
+            "Password": password
+        }
+        return self.client.post(
+            '/api/v1/auth/signup',
+            data=json.dumps(user_data),
+            content_type="application/json")
+
+    def sign_in_user(self, email="John_Doe@example.com",
+                     password="its26uv3nf"):
+        """A login helper method"""
+        data = {"Email": email, "Password": password}
+        return self.client.post(
+            '/api/v1/auth/login',
+            data=json.dumps(data),
+            content_type="application/json")
+
     def test_api_get_entries_without_token(self):
         """Test get entries without token"""
         response = self.client.get(
@@ -47,21 +73,8 @@ class EntryTestCase(unittest.TestCase):
 
     def test_api_can_get_all_entries(self):
         """Test API can GET all entries """
-        #Signup
-        signup = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(signup.status_code, 201)
-
-        #Login
-        login = self.client.post(
-            '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        result = json.loads(login.data)
-        self.assertEqual(result['message'], 'Successfully login.')
-        self.assertEqual(login.status_code, 201)
+        self.register_user()
+        login = self.sign_in_user()
 
         #entries
         access_token = json.loads(login.data.decode())['auth_token']
@@ -74,22 +87,8 @@ class EntryTestCase(unittest.TestCase):
 
     def test_400_post_entries(self):
         """Test bad request on post method"""
-        #Signup
-        signup = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(signup.status_code, 201)
-
-        #Login
-        login = self.client.post(
-            '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        result = json.loads(login.data)
-        self.assertEqual(result['message'], 'Successfully login.')
-        self.assertEqual(login.status_code, 201)
-
+        self.register_user()
+        login = self.sign_in_user()
         #entries
         access_token = json.loads(login.data.decode())['auth_token']
         empty = self.client.post(
@@ -101,20 +100,8 @@ class EntryTestCase(unittest.TestCase):
 
     def test_api_post_entries(self):
         """Test API url [POST] api/user/entries"""
-        signup = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(signup.status_code, 201)
-
-        #Login
-        login = self.client.post(
-            '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        result = json.loads(login.data)
-        self.assertEqual(result['message'], 'Successfully login.')
-        self.assertEqual(login.status_code, 201)
+        self.register_user()
+        login = self.sign_in_user()
 
         #entries
         access_token = json.loads(login.data.decode())['auth_token']
@@ -127,21 +114,8 @@ class EntryTestCase(unittest.TestCase):
 
     def test_api_get_single_entry(self):
         """Test API url [GET] api/user/{id}"""
-        #Signup
-        signup = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(signup.status_code, 201)
-
-        #Login
-        login = self.client.post(
-            '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        result = json.loads(login.data)
-        self.assertEqual(result['message'], 'Successfully login.')
-        self.assertEqual(login.status_code, 201)
+        self.register_user()
+        login = self.sign_in_user()
 
         #entries
         access_token = json.loads(login.data.decode())['auth_token']
@@ -158,22 +132,8 @@ class EntryTestCase(unittest.TestCase):
         self.assertEqual(response1.status_code, 200)
 
     def test_404_get_single_entry(self):
-        #Signup
-        signup = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(signup.status_code, 201)
-
-        #Login
-        login = self.client.post(
-            '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        result = json.loads(login.data)
-        self.assertEqual(result['message'], 'Successfully login.')
-        self.assertEqual(login.status_code, 201)
-
+        self.register_user()
+        login = self.sign_in_user()
         #entries
         access_token = json.loads(login.data.decode())['auth_token']
         response = self.client.post(
@@ -190,21 +150,8 @@ class EntryTestCase(unittest.TestCase):
 
     def test_api_update_entry_with_id(self):
         """Test API url [PUT] api/user/entries"""
-        #Signup
-        signup = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(signup.status_code, 201)
-
-        #Login
-        login = self.client.post(
-            '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        result = json.loads(login.data)
-        self.assertEqual(result['message'], 'Successfully login.')
-        self.assertEqual(login.status_code, 201)
+        self.register_user()
+        login = self.sign_in_user()
 
         #entries
         access_token = json.loads(login.data.decode())['auth_token']
@@ -227,20 +174,8 @@ class EntryTestCase(unittest.TestCase):
     def test_404_PUT_entries(self):
         """Test bad entry on [PUT] method"""
         #Signup
-        signup = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(signup.status_code, 201)
-
-        #Login
-        login = self.client.post(
-            '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        result = json.loads(login.data)
-        self.assertEqual(result['message'], 'Successfully login.')
-        self.assertEqual(login.status_code, 201)
+        self.register_user()
+        login = self.sign_in_user()
 
         #entries
         access_token = json.loads(login.data.decode())['auth_token']
@@ -256,21 +191,8 @@ class EntryTestCase(unittest.TestCase):
 
     def test_api_400_invalid_parameter(self):
         """Test status_code 400 [PUT] for api/user/entries/<id>"""
-        #Signup
-        signup = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(signup.status_code, 201)
-
-        #Login
-        login = self.client.post(
-            '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        result = json.loads(login.data)
-        self.assertEqual(result['message'], 'Successfully login.')
-        self.assertEqual(login.status_code, 201)
+        self.register_user()
+        login = self.sign_in_user()
 
         #entries
         access_token = json.loads(login.data.decode())['auth_token']
@@ -289,21 +211,8 @@ class EntryTestCase(unittest.TestCase):
 
     def test_delete_an_entry(self):
         """Test API resource [DELETE] endpoint url api/user/entries/<id>"""
-        #Signup
-        signup = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(signup.status_code, 201)
-
-        #Login
-        login = self.client.post(
-            '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        result = json.loads(login.data)
-        self.assertEqual(result['message'], 'Successfully login.')
-        self.assertEqual(login.status_code, 201)
+        self.register_user()
+        login = self.sign_in_user()
 
         #entries
         access_token = json.loads(login.data.decode())['auth_token']
@@ -321,21 +230,8 @@ class EntryTestCase(unittest.TestCase):
 
     def test_del_status_400_invalid_id(self):
         """Test API resource [DELETE] endpoint url api/user/entries/<id>"""
-        #Signup
-        signup = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(signup.status_code, 201)
-
-        #Login
-        login = self.client.post(
-            '/api/v1/auth/login',
-            data=json.dumps(self.user_login),
-            content_type="application/json")
-        result = json.loads(login.data)
-        self.assertEqual(result['message'], 'Successfully login.')
-        self.assertEqual(login.status_code, 201)
+        self.register_user()
+        login = self.sign_in_user()
 
         #entries
         access_token = json.loads(login.data.decode())['auth_token']
