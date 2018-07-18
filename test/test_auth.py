@@ -125,11 +125,11 @@ class EntryTestCase(unittest.TestCase):
     #Login
     def test_api_user_login_successfully(self):
         """Test user signin successfully"""
-        response = self.client.post(
-            '/api/v1/auth/signup',
-            data=json.dumps(self.user_registration),
-            content_type="application/json")
-        self.assertEqual(response.status_code, 201)
+        # response = self.client.post(
+        #     '/api/v1/auth/signup',
+        #     data=json.dumps(self.user_registration),
+        #     content_type="application/json")
+        # self.assertEqual(response.status_code, 201)
         response = self.client.post(
             '/api/v1/auth/login',
             data=json.dumps(self.user_login),
