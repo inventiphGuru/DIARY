@@ -81,6 +81,20 @@ example below
 
 ```
 
+
+### Api endpoints
+
+| url | Method|  Description| Authentication |
+| --- | --- | --- | --- |
+| /api/v1/auth/register | POST | Registers new user | FALSE
+| /api/v1/auth/login | POST | Sign in a user and generate token | TRUE
+| /api/v1/auth/logout | GET | Logs out an authenticated user | TRUE
+| /api/v1/users/entries | GET | Fetch all entries of an authenticated user|TRUE
+| /api/v1/users/entries/contentId} | GET | Get an entry with {id}  of an authenticated user|TRUE
+| /api/v1/users/entries | POST | Create a new entry of an authenticated user|TRUE
+| /api/v1/users/entries/contentId} | PUT | Update an entry with {id} of authenticated user|TRUE
+| /api/v1/users/entries/contentId} | DELETE | Delete an entry  with {id} of authenticated user|TRUE
+
 <h3>Test Example</h3>
 
 
