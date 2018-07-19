@@ -1,15 +1,17 @@
 [![Build Status](https://travis-ci.com/YA7YA-H/DIARY.svg?branch=develop-challenge-2)](https://travis-ci.com/YA7YA-H/DIARY)
-
+[![Coverage Status](https://coveralls.io/repos/github/YA7YA-H/DIARY/badge.svg)](https://coveralls.io/github/YA7YA-H/DIARY)
 <a href="https://www.python.org/dev/peps/pep-0008/">
 <img class="notice-badge" src="https://img.shields.io/badge/code%20style-pep8-orange.svg" alt="Badge"/>
+<a href="LICENSE.md">
+<img class="notice-badge" src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="Badge"/>
+</a>
 </a>
 
 **MY DIARY Api:** version 1.0
-**Powered by Flask!**
 
 <h2>MY DIARY</h2>
 
-A simple api for My Diary app
+A simple api for My Diary app <br>
 MyDiary is an online journal where users can pen down their thoughts and feelings.
 The my diary api has been beautifully designed with a endpoints functionalities that include:
 creation of new user account, creation of new entries, viewing of entries, updating of entries, deletion of entries,
@@ -51,8 +53,9 @@ enjoy
 <p><code>$ pip install -r requirements.txt</code></p>
 </ol>
 
-##Running the Server
+## Running the Server
 *Inside the virtualenv*
+<br>
 Start the server at localhost:5000 by running the following command:
 ```
 python3 run.py
@@ -80,6 +83,20 @@ These tests ensure Users are registered login credentials are secure, entries ar
 example below
 
 ```
+
+
+### Api endpoints
+
+| url | Method|  Description| Authentication |
+| --- | --- | --- | --- |
+| /api/v1/auth/register | POST | Registers new user | FALSE
+| /api/v1/auth/login | POST | Sign in a user and generate token | TRUE
+| /api/v1/auth/logout | GET | Logs out an authenticated user | TRUE
+| /api/v1/users/entries | GET | Fetch all entries of an authenticated user|TRUE
+| /api/v1/users/entries/contentId} | GET | Get an entry with {id}  of an authenticated user|TRUE
+| /api/v1/users/entries | POST | Create a new entry of an authenticated user|TRUE
+| /api/v1/users/entries/contentId} | PUT | Update an entry with {id} of authenticated user|TRUE
+| /api/v1/users/entries/contentId} | DELETE | Delete an entry  with {id} of authenticated user|TRUE
 
 <h3>Test Example</h3>
 
@@ -116,13 +133,17 @@ Note: Travis-ci ensures continous integration and runs test automatically for th
 Heroku app -----comingup------
 
 ## Built With
-
-* [FLASK_RESTPLUS_] - For restful API
+**Powered by Flask!**
+* [_FLASK_RESTPLUS_] - For restful API
 * [Dependencies in requirements.txt] - Dependency Management
 *
 ## Contributing
 
 Contributions would be highly appreciated, Help out and make a pull request, and the process for submitting pull requests to me.
+
+
+## GH-PAGES TEMPLATE
+
 
 ## Authors
 
@@ -132,3 +153,7 @@ Contributions would be highly appreciated, Help out and make a pull request, and
 ## COMPANY
 
 * **ANDELA KENYA**
+
+## License
+
+This project is licensed under the GNU License - see the [LICENSE.md](LICENSE.md) file for details
