@@ -1,15 +1,14 @@
 [![Build Status](https://travis-ci.com/YA7YA-H/DIARY.svg?branch=develop-challenge-2)](https://travis-ci.com/YA7YA-H/DIARY)
-
+[![Coverage Status](https://coveralls.io/repos/github/YA7YA-H/DIARY/badge.svg)](https://coveralls.io/github/YA7YA-H/DIARY)
 <a href="https://www.python.org/dev/peps/pep-0008/">
 <img class="notice-badge" src="https://img.shields.io/badge/code%20style-pep8-orange.svg" alt="Badge"/>
 </a>
 
 **MY DIARY Api:** version 1.0
-**Powered by Flask!**
 
 <h2>MY DIARY</h2>
 
-A simple api for My Diary app
+A simple api for My Diary app <br>
 MyDiary is an online journal where users can pen down their thoughts and feelings.
 The my diary api has been beautifully designed with a endpoints functionalities that include:
 creation of new user account, creation of new entries, viewing of entries, updating of entries, deletion of entries,
@@ -51,8 +50,9 @@ enjoy
 <p><code>$ pip install -r requirements.txt</code></p>
 </ol>
 
-##Running the Server
+## Running the Server
 *Inside the virtualenv*
+<br>
 Start the server at localhost:5000 by running the following command:
 ```
 python3 run.py
@@ -116,8 +116,8 @@ Note: Travis-ci ensures continous integration and runs test automatically for th
 Heroku app -----comingup------
 
 ## Built With
-
-* [FLASK_RESTPLUS_] - For restful API
+**Powered by Flask!**
+* [_FLASK_RESTPLUS_] - For restful API
 * [Dependencies in requirements.txt] - Dependency Management
 *
 ## Contributing
