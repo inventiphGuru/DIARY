@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.com/YA7YA-H/DIARY.svg?branch=develop-challenge-2)](https://travis-ci.com/YA7YA-H/DIARY)
-[![Coverage Status](https://coveralls.io/repos/github/YA7YA-H/DIARY/badge.svg)](https://coveralls.io/github/YA7YA-H/DIARY)
+[![Coverage Status](https://coveralls.io/repos/github/YA7YA-H/DIARY/badge.svg?branch=develop-challenge-2)](https://coveralls.io/github/YA7YA-H/DIARY?branch=develop-challenge-2)
 <a href="https://www.python.org/dev/peps/pep-0008/">
 <img class="notice-badge" src="https://img.shields.io/badge/code%20style-pep8-orange.svg" alt="Badge"/>
 <a href="LICENSE.md">
