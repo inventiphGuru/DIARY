@@ -7,4 +7,4 @@ class Blacklist:
         self.token = token
 
     def save_blacklist(self):
-        blacklist.append(self.token
+        blacklist.append(self.token)
